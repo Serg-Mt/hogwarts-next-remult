@@ -9,9 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.2.2",
+    "@tailwindcss/postcss": "^4.0.13",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/mdx": "^2.0.13",
+    "@vanilla-extract/next-plugin": "^2.4.10",
+    "next": "15.2.0",
+    "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.2.0"
+    "remult": "^2.7.30",
+    "sass": "^1.85.1",
+    "tailwindcss": "^4.0.13"
   },
   "devDependencies": {
     "typescript": "^5",

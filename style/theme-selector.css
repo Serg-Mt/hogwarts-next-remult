@@ -1,0 +1,25 @@
+:root {
+  &:has(#theme-selector [value=auto]:checked) {
+    color-scheme: light dark;
+  }
+
+  &:has(#theme-selector [value=light]:checked) {
+    color-scheme: light;
+  }
+
+  &:has(#theme-selector [value=dark]:checked) {
+    color-scheme: dark;
+  }
+}
+
+@custom-variant dark {
+  :root:has(#theme-selector [value=dark]:checked) &{
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:has(#theme-selector [value=auto]:checked) & {
+      @slot;
+    }
+  }
+}
+
