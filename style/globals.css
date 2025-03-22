@@ -46,3 +46,12 @@ header, footer {
 main {
   @apply  justify-items-center p-4;
 }
+
+:link {
+  text-decoration: underline transparent;
+  transition: text-decoration-color 3s,
+}
+
+:link:hover {
+  text-decoration-color: currentColor;
+}

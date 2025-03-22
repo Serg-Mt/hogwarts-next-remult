@@ -12,7 +12,7 @@
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.2.2",
-    "@tailwindcss/postcss": "^4.0.13",
+    "@tailwindcss/postcss": "^4.0.14",
     "@tailwindcss/typography": "^0.5.16",
     "@types/mdx": "^2.0.13",
     "@vanilla-extract/next-plugin": "^2.4.10",
@@ -20,17 +20,17 @@
     "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "remult": "^2.7.30",
+    "remult": "^2.7.31",
     "sass": "^1.85.1",
-    "tailwindcss": "^4.0.13"
+    "tailwindcss": "^4.0.14"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
+    "typescript": "^5.8.2",
+    "@types/node": "^20.17.24",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "eslint": "^9.22.0",
     "eslint-config-next": "15.2.0",
-    "@eslint/eslintrc": "^3"
+    "@eslint/eslintrc": "^3.3.0"
   }
 }

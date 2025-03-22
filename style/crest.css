@@ -1,4 +1,5 @@
 .crest-house-div {
+
   font-size: clamp(.8em, 5vmin, 10em);
   text-shadow: 2px 2px 4px white;
 
@@ -7,8 +8,19 @@
   }
 
   &>a {
-    @apply hover:scale-110 transition-transform duration-300;
+    /* text-decoration: underline transparent; */
+
+    /* text-decoration-color: red; */
+    transition:  transform .3s;
+
+    &:hover {
+      transform: scale(1.1);
+      /* text-decoration-color: currentColor; */
+    }
+
     &>div {
+      /* text-decoration: inherit; */
+      border-radius: 1em;
       backdrop-filter: blur(1px);
       /* @apply bg-sky-500/50; */
 
