@@ -35,7 +35,8 @@ export class ImmutableList<T extends HasId> extends Array<T> {
       testFn = ImmutableList.isEqualCallback(id),
       found = () => { wasNotFound = false; return obj },
       result = this.map(elem => testFn(elem) ? found() : elem);
-    if (wasNotFound) throw new Error('ImmutableList: not found id');
+    if (wasNotFound)
+      throw new Error('ImmutableList: not found id');
     return result as ImmutableList<T>;
   }
 }

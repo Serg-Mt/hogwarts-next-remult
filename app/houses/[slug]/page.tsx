@@ -4,11 +4,10 @@ import { notFound, redirect } from 'next/navigation';
 import { Student } from '@/shared/entities/Student'
 import { Teacher } from '@/shared/entities/Teacher';
 import Image from 'next/image';
-import { url } from 'inspector';
 
 
 const
-  remult = await api.getRemult(),
+  remult = await api.getRemult(), // !!!!!
   repoHouse = remult.repo(House),
   houses = await repoHouse.find(
     {

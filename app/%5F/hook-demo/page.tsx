@@ -38,7 +38,7 @@ function DemoHookUseOptimisticList() {  // один TODO просто в пам�
       _ref.current = { id: item.id, state: 'added' };
       const newList = [...list, item];
       update(newList, async () => {
-        await wait(5000);
+        await wait(1000);
         _ref.current = {} as RefType;
         return old => [...old, item];
       });
@@ -48,7 +48,7 @@ function DemoHookUseOptimisticList() {  // один TODO просто в пам�
       const newList = list.filter(x => String(x.id) !== String(id));
       console.log('del1', { id }, _ref.current);
       update([...list], async () => {
-        await wait(2000);
+        await wait(1000);
         _ref.current = {} as RefType;
         return newList
       });
@@ -57,7 +57,7 @@ function DemoHookUseOptimisticList() {  // один TODO просто в пам�
       _ref.current = { id: item.id, state: 'edited' };
       const newList = list.map(x => String(x.id) === String(item.id) ? { ...item } : x);
       update([...list], async () => {
-        await wait(5000);
+        await wait(1000);
         _ref.current = {} as RefType;
         return newList
       });
@@ -179,7 +179,8 @@ function GenericToDo(
 
 type FormAction = (formData: FormData) => Promise<void>;
 
-function ItemComponent({ item, formDel, onChange, className }: { item: Item, formDel: FormAction, onChange: ChangeEventHandler, className: string }) {
+function ItemComponent({ item, formDel, onChange, className }
+  : { item: Item, formDel: FormAction, onChange: ChangeEventHandler, className: string }) {
   const { id, title, completed, /* createdAt */ } = item;
   return <li className={className}>
     <input type="checkbox" checked={completed} onChange={onChange} data-id={id} />
