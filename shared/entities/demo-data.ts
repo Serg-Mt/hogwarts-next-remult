@@ -7,10 +7,10 @@ import { Subject } from './Subject';
 
 export const teachers: Teacher[] = [
   // { id: -1, name: 'Albus', surname: 'Dumbledore' },
-  { id: 1, name: 'Minerva', surname: 'McGonagall', },
+  { id: 1, name: 'Minerva', surname: 'McGonagall', img: 'https://upload.wikimedia.org/wikipedia/en/e/ea/McGonagall_%28screenshot%29.jpg' },
   { id: 2, name: 'Pomona', surname: 'Pomona Sprout' },
   { id: 3, name: 'Filius', surname: 'Flitwick' },
-  { id: 4, name: 'Severus', surname: 'Snape' },
+  { id: 4, name: 'Severus', surname: 'Snape', img: 'https://static.wikia.nocookie.net/warner-bros-entertainment/images/c/c1/Severus-snape1.jpg/revision/latest?cb=20171112083156' },
   { id: 5, name: 'Aurora', surname: 'Sinistra' },
   { id: 6, name: 'Silvanus', surname: 'Kettleburn' },
   { id: 7, name: 'Sybill', surname: 'Trelawney' },

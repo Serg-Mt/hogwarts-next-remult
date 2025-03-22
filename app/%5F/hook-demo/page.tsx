@@ -5,7 +5,7 @@ import { ImmutableList } from '@/lib/immutable';
 import { useOptimisticList } from '@/lib/useOptimisticList';
 import { useRemultOptimisticList } from '@/lib/useRemultOptimisticList';
 import { Item } from '@/shared/entities/Item';
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import type { ChangeEvent, ChangeEventHandler, ReactNode } from 'react';
 
 async function wait(ms: number) {
@@ -29,6 +29,7 @@ export default function Page() {
 }
 
 function DemoHookUseOptimisticList() {  // один TODO просто в памяти
+  console.debug('DemoHookUseOptimisticList')
   const
     { list, update } = useOptimisticList<unknown, Item[]>([]),
     _ref = useRef({} as RefType),
@@ -79,6 +80,7 @@ function DemoHookUseOptimisticList() {  // один TODO просто в пам�
 }
 
 function DemoHookUseRemultOptimisticList() {
+  console.debug('DemoHookUseRemultOptimisticList');
   const
     { list,
       loading,
@@ -112,6 +114,13 @@ type GenericToDoPropsType = {
 function GenericToDo(
   { list, loading, add, del, edit, children, getClassById }: GenericToDoPropsType
 ) {
+  useEffect(() => console.debug('GenericToDo change list',), [list]);
+  useEffect(() => console.debug('GenericToDo change loading',), [loading]);
+  useEffect(() => console.debug('GenericToDo change add',), [add]);
+  useEffect(() => console.debug('GenericToDo change del',), [del]);
+  useEffect(() => console.debug('GenericToDo change edit',), [edit]);
+  useEffect(() => console.debug('GenericToDo change children',), [children]);
+  useEffect(() => console.debug('GenericToDo change getClassById',), [getClassById]);
   const
     formRef = useRef<HTMLFormElement>(null),
     formAdd = useCallback(async (formData: FormData) => {
@@ -127,7 +136,7 @@ function GenericToDo(
     formDel = useCallback(async (formData: FormData) => {
       const
         id = formData.get('id') as string;
-      // console.debug('formDel', { id }, ...formData.entries());
+      console.debug('formDel', { id }, ...formData.entries());
       del(+id);
     }, [del]),
     // formEdit = useCallback(async (formData: FormData) => {
@@ -145,7 +154,7 @@ function GenericToDo(
       edit(newItem);
     }, [edit, list]);
 
-
+  console.debug('GenericToDo');
   return <fieldset className="border p-2">
     <legend>{children}</legend>
     <form action={formAdd} ref={formRef}>

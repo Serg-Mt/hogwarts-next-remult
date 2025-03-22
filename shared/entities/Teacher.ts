@@ -20,6 +20,9 @@ export class Teacher {
   surname!: string
 
   @Fields.string({ allowNull: true })
+  img?: string
+
+  @Fields.string({ allowNull: true })
   userId?: string
 
   @Relations.toOne(() => User, { field: "userId" })

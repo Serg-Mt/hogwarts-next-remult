@@ -22,14 +22,12 @@ type RefType = Map<IdType, State>;
 
 // type idType<T> = Parameters<Repository<T>['delete']>[0]
 
-
-
-export function useRemultOptimisticList<ItemClass extends HasId, RepositoryType extends ClassType<ItemClass>>(entity: RepositoryType, { findOption }: { findOption?: FindOptions<ItemClass> } = {}) {
+export function useRemultOptimisticList<ItemClass extends HasId, RepositoryType extends ClassType<ItemClass>>
+  (entity: RepositoryType, { findOption }: { findOption?: FindOptions<ItemClass> } = {}) {
   const
     { list, update, directSet } = useOptimisticList(new ImmutableList<ItemClass>),
     [error, setError] = useState<Error | null>(null),
     [loading, setLoading] = useState(true),
-    listClone = useRef(list), // тут будем хранить текущий список
     _ref = useRef(new Map as RefType), //вместо стейта используем рефы
 
     // эта функция отдаст интерфейсу оптимистичный класс элемента по его id
@@ -42,14 +40,18 @@ export function useRemultOptimisticList<ItemClass extends HasId, RepositoryType 
 
     deleteElementById = useCallback((id: idType<ItemClass>) => {
       _ref.current.set(id, 'deleted');
-      // console.debug('deleteElementById', { id }, { _ref });
-      const
-        item = clone(listClone.current.getById(id)); // чтоб Pure-компонент обновился
+      console.debug('deleteElementById', { id })
       update(
-        listClone.current.replaceById(id, item!),
+        prev => {
+          const
+            item = clone(prev.getById(id)); // чтоб Pure-компонент обновился
+          console.debug('__action useRemultOptimisticList');
+          return prev.replaceById(id, item!);
+        },
         async () => {
-          await repo(entity).delete(id);
+          const res = await repo(entity).delete(id);
           _ref.current.delete(id);
+          console.debug('+deleteElementById', { id, res })
           return prev => prev.deleteById(id);
         });
     }, [entity]),
@@ -60,9 +62,8 @@ export function useRemultOptimisticList<ItemClass extends HasId, RepositoryType 
       if (!cloneItem.id)
         cloneItem.id = Math.random();
       _ref.current.set(cloneItem.id, 'added');
-      // console.debug('addElement', { fakeItem: cloneItem });
       update(
-        listClone.current.add(cloneItem),
+        prev => prev.add(cloneItem),
         async () => {
           const
             newItem = await repo(entity).insert(item);
@@ -75,7 +76,7 @@ export function useRemultOptimisticList<ItemClass extends HasId, RepositoryType 
       _ref.current.set(item.id, 'updated');
       // console.debug('updateElement', { item })
       update(
-        listClone.current.replaceById(item.id, item),
+        prev => prev.replaceById(item.id, item),
         async () => {
           await repo(entity).update(item.id as idType<ItemClass>, item);
           _ref.current.delete(item.id);
@@ -83,7 +84,7 @@ export function useRemultOptimisticList<ItemClass extends HasId, RepositoryType 
         });
     }, [entity]);
 
-  listClone.current = list;
+
 
 
   useEffect(() => {

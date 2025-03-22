@@ -28,6 +28,7 @@ export class ImmutableList<T extends HasId> extends Array<T> {
   }
 
   public replaceById(id: IdType, obj: T) {
+    console.debug('replaceById', id, obj)
     let
       wasNotFound = true;
     const

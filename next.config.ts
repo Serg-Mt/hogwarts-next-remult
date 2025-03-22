@@ -14,6 +14,17 @@ const
 
   nextConfig: NextConfig = {
     pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'], 
+    images:{
+      remotePatterns:[
+        {
+          protocol: 'https',
+          hostname: 'upload.wikimedia.org',
+          port: '',
+          pathname: '/**',
+          search: '',
+        },
+      ]
+    }
   };
 
 export default withVanillaExtract(withMDX(nextConfig)); // https://vanilla-extract.style/documentation/integrations/next/#setup
