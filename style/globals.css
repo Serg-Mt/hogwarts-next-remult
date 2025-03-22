@@ -1,15 +1,17 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+
 @import "./theme-selector.css";
 @import "./crest.css";
+@import "./forms.css";
+@import "./oprimistic.css";
 
 
-
-:root {
-  /* --background: #ffffff;
-  --foreground: #171717; */
-}
+/* :root {
+   --background: #ffffff;
+  --foreground: #171717; 
+} */
 
 @theme inline {
   --color-background: var(--background);

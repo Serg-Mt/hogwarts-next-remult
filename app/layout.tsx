@@ -18,8 +18,8 @@ export default function RootLayout({
     <html lang="ru">
       <body className="">
         <NavBar />
-        text before main
-        <main> 
+        {/* text before main */}
+        <main className=""> 
           {children}
           </main>
         <Footer />

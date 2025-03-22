@@ -1,0 +1,40 @@
+.optimistic {
+  &::before {
+    position: relative;
+    font-size: 1em;
+    left: -20px;
+  }
+
+  &.added::before {
+    content: '➕';
+  }
+
+  &.updated::before {
+    content: '❕';
+  }
+
+  &.deleted:before {
+    content: '✖';
+  }
+
+}
+
+.optimistic {
+  background: linear-gradient(105deg, #8e2de2, transparent);
+  background-size: 12.5% 90%;
+  background-repeat: repeat-x;
+  animation: gradientAnimation 2000ms infinite linear forwards;
+  transition: opacity 100ms ease-in-out;
+}
+
+/* Анимация градиента */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 100% 0%;
+  }
+}
+

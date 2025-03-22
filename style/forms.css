@@ -1,0 +1,10 @@
+main {
+
+  input,
+  button {
+    @apply rounded border;
+  }
+  button {
+    @apply px-2
+  }
+}
